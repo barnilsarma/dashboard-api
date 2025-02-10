@@ -6,6 +6,9 @@ const Read=async (req:Request,res:Response)=>{
         const data=await prisma.user.findUnique({
             where:{
                 id:req.params.id
+            },
+            include:{
+                Room:true
             }
         });
         res.status(200).json({
